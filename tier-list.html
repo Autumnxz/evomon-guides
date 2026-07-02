@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evomon Tier List — Best Evomon Ranked</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10131b; --bg-raised:#171c28; --line:#2a3143;
+    --ink:#eef1f7; --ink-dim:#9aa3b8; --gold:#ffc857;
+    --s:#ff5c8a; --a:#ff9f4a; --b:#ffd84a; --c:#8fd4ff; --d:#6b7488;
+    --fire:#ff6b4a; --water:#3fb6ff; --grass:#63d68a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:radial-gradient(1200px 500px at 15% -10%, #1b2233 0%, transparent 60%),
+      radial-gradient(900px 400px at 100% 0%, #201a2c 0%, transparent 55%), var(--bg);
+    color:var(--ink); font-family:'Inter',sans-serif; line-height:1.5;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(16,19,27,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;letter-spacing:-0.01em;text-decoration:none;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);}
+  .navlinks{display:flex;gap:22px;font-size:14px;color:var(--ink-dim);}
+  .navlinks a{text-decoration:none;transition:color .15s;}
+  .navlinks a.active{color:var(--gold);}
+  .navlinks a:hover{color:var(--ink);}
+  @media (max-width:640px){.navlinks{gap:14px;font-size:13px;}}
+
+  header.pagehead{padding:56px 0 40px;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--gold);letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(255,200,87,0.08);border:1px solid rgba(255,200,87,0.25);
+    padding:5px 10px;border-radius:5px;margin-bottom:18px;
+  }
+  h1.title{font-size:clamp(30px,5vw,44px);line-height:1.1;margin:0 0 12px;letter-spacing:-0.02em;}
+  .lede{font-size:16px;color:var(--ink-dim);max-width:600px;margin:0;}
+
+  section{padding:44px 0;border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:20px;}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dim);letter-spacing:.08em;text-transform:uppercase;margin:0 0 8px;}
+  h2{font-size:22px;margin:0;letter-spacing:-0.01em;}
+
+  .caveat{
+    background:var(--bg-raised);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:8px;padding:16px 18px;margin-bottom:32px;font-size:14px;color:var(--ink-dim);
+  }
+  .caveat strong{color:var(--ink);}
+
+  .tier-row{display:grid;grid-template-columns:74px 1fr;gap:16px;margin-bottom:12px;align-items:stretch;}
+  .tier-label{
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;
+    font-weight:700;font-size:26px;border-radius:10px;color:#10131b;
+  }
+  .tier-s .tier-label{background:var(--s);}
+  .tier-a .tier-label{background:var(--a);}
+  .tier-b .tier-label{background:var(--b);}
+  .tier-c .tier-label{background:var(--c);}
+  .tier-d .tier-label{background:var(--d);color:#eef1f7;}
+
+  .tier-mons{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  }
+  .mon-chip{
+    display:inline-flex;flex-direction:column;gap:1px;
+    background:#1d2333;border:1px solid var(--line);border-radius:7px;
+    padding:7px 12px;font-size:13.5px;font-weight:600;
+  }
+  .mon-chip .mon-role{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:10.5px;color:var(--ink-dim);}
+
+  .role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+  .role-card{background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+  .role-card h3{margin:0 0 6px;font-size:14.5px;}
+  .role-card p{margin:0;font-size:13.5px;color:var(--ink-dim);}
+
+  footer{padding:32px 0;text-align:center;color:var(--ink-dim);font-size:13px;}
+  .footer-note{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5c6478;margin-top:6px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="dot"></span>Evomon Guide</a>
+    <div class="navlinks">
+      <a href="index.html">Quick Start</a>
+      <a href="index.html#starters">Starters</a>
+      <a href="tier-list.html" class="active">Tier List</a>
+      <a href="codes.html">Codes</a>
+      <a href="index.html#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<header class="pagehead">
+  <div class="wrap">
+    <div class="eyebrow">Battle & team building</div>
+    <h1 class="title">Evomon tier list — who's actually worth training.</h1>
+    <p class="lede">Ranked by real combat value: boss performance, tower consistency, and how well a line scales once evolved — not just base-form stats.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="caveat">
+      <strong>Read this before you commit resources:</strong> community tier lists disagree a lot on Evomon, mostly because base forms and fully-evolved lines rank very differently. A monster that looks weak on day one (Bluebird, Gulpfish) can become a top pick once evolved (Vulcest, Mirefish). This list ranks by full evolution line potential — treat it as a starting point for where to invest EXP Fruit and evolution materials, not gospel.
+    </div>
+    <div class="section-head">
+      <p class="kicker">Ranked</p>
+      <h2>Tier list</h2>
+    </div>
+
+    <div class="tier-row tier-s">
+      <div class="tier-label">S</div>
+      <div class="tier-mons">
+        <div class="mon-chip">Arcub<span class="mon-role">Electric · burst DPS</span></div>
+        <div class="mon-chip">Lavite<span class="mon-role">Fire · best-in-slot carry</span></div>
+        <div class="mon-chip">Frostlet → Frostseer<span class="mon-role">Ice · frostbite stacking</span></div>
+        <div class="mon-chip">Bluebird → Vulcest<span class="mon-role">Flying · bleed damage</span></div>
+        <div class="mon-chip">Tarro<span class="mon-role">Grass · premier tank</span></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-a">
+      <div class="tier-label">A</div>
+      <div class="tier-mons">
+        <div class="mon-chip">Astraknight<span class="mon-role">Fighting · premium pick</span></div>
+        <div class="mon-chip">Databud<span class="mon-role">Psychic · debuff utility</span></div>
+        <div class="mon-chip">Thorlord<span class="mon-role">Accuracy control</span></div>
+        <div class="mon-chip">Teragon<span class="mon-role">Sustain tank</span></div>
+        <div class="mon-chip">Gempress<span class="mon-role">1v1 closer</span></div>
+        <div class="mon-chip">Pummpaw<span class="mon-role">Fighting · physical DPS</span></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-b">
+      <div class="tier-label">B</div>
+      <div class="tier-mons">
+        <div class="mon-chip">Sparkit<span class="mon-role">Fire · early alt carry</span></div>
+        <div class="mon-chip">Mudbud<span class="mon-role">Ground · early pairing</span></div>
+        <div class="mon-chip">Wispuff<span class="mon-role">Poison · grinding staple</span></div>
+        <div class="mon-chip">Glacitadel<span class="mon-role">Ice · durability</span></div>
+        <div class="mon-chip">Cherantom<span class="mon-role">Bleed applicator</span></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-c">
+      <div class="tier-label">C</div>
+      <div class="tier-mons">
+        <div class="mon-chip">Gulpfish → Mirefish<span class="mon-role">Water · strong once evolved</span></div>
+        <div class="mon-chip">Clampip<span class="mon-role">Situational</span></div>
+        <div class="mon-chip">Starloop<span class="mon-role">Niche utility</span></div>
+        <div class="mon-chip">Humding<span class="mon-role">Playstyle pick</span></div>
+      </div>
+    </div>
+
+    <div class="tier-row tier-d">
+      <div class="tier-label">D</div>
+      <div class="tier-mons">
+        <div class="mon-chip">Budling<span class="mon-role">Outclassed</span></div>
+        <div class="mon-chip">Chirppy<span class="mon-role">Outclassed</span></div>
+        <div class="mon-chip">Tinkog<span class="mon-role">Outclassed</span></div>
+        <div class="mon-chip">Mopebun<span class="mon-role">Fills dex, not a team slot</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Reading the list</p>
+      <h2>What actually earns a spot in S-tier</h2>
+    </div>
+    <div class="role-grid">
+      <div class="role-card"><h3>Type advantage first</h3><p>The single biggest factor — is this the strongest option in its type? That beats raw stats almost every time.</p></div>
+      <div class="role-card"><h3>Raw damage</h3><p>Turns are limited, so consistent hard-hitting attacks matter more than flashy but unreliable kits.</p></div>
+      <div class="role-card"><h3>Speed and initiative</h3><p>Acting first in a turn-based fight often decides the outcome before damage numbers even matter.</p></div>
+      <div class="role-card"><h3>Team role</h3><p>Every good 5-slot team needs pressure, control, sustain, and a closer — not six copies of the same job.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    This is an unofficial, community-style reference — not affiliated with the Evomon developers. Tier placements are aggregated community consensus and will shift with balance patches.
+    <div class="footer-note">Compiled from multiple community tier lists current as of late June – July 2026.</div>
+  </div>
+</footer>
+
+</body>
+</html>
