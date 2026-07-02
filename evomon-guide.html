@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evomon Guide — Start Here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10131b;
+    --bg-raised:#171c28;
+    --line:#2a3143;
+    --ink:#eef1f7;
+    --ink-dim:#9aa3b8;
+    --gold:#ffc857;
+    --fire:#ff6b4a;
+    --water:#3fb6ff;
+    --grass:#63d68a;
+    --ice:#8fe8f0;
+    --bug:#c7e05b;
+    --ground:#d69a5c;
+    --rock:#b6a488;
+    --shadow:#9d7bd8;
+    --light:#ffe28a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, #1b2233 0%, transparent 60%),
+      radial-gradient(900px 400px at 100% 0%, #201a2c 0%, transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(16,19,27,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;letter-spacing:-0.01em;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);}
+  .navlinks{display:flex;gap:22px;font-size:14px;color:var(--ink-dim);}
+  .navlinks a{text-decoration:none;transition:color .15s;}
+  .navlinks a:hover{color:var(--ink);}
+  @media (max-width:640px){.navlinks{display:none;}}
+
+  /* HERO */
+  header.hero{padding:72px 0 56px;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--gold);letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(255,200,87,0.08);border:1px solid rgba(255,200,87,0.25);
+    padding:5px 10px;border-radius:5px;margin-bottom:20px;
+  }
+  h1.title{font-size:clamp(34px,5.5vw,54px);line-height:1.05;margin:0 0 16px;letter-spacing:-0.02em;}
+  h1.title span{color:var(--gold);}
+  .lede{font-size:17px;color:var(--ink-dim);max-width:560px;margin:0 0 28px;}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 20px;border-radius:8px;font-weight:600;font-size:14.5px;
+    text-decoration:none;border:1px solid transparent;transition:transform .12s, background .12s;
+  }
+  .btn-primary{background:var(--gold);color:#1a1204;}
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink-dim);}
+
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:28px;}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dim);letter-spacing:.08em;text-transform:uppercase;margin:0 0 8px;}
+  h2{font-size:26px;margin:0;letter-spacing:-0.01em;}
+
+  /* QUICK START STEPS */
+  .steps{display:grid;gap:14px;}
+  .step{
+    display:grid;grid-template-columns:44px 1fr;gap:16px;
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;
+    padding:18px 20px;
+  }
+  .step-num{
+    font-family:'JetBrains Mono',monospace;font-weight:600;font-size:14px;color:var(--gold);
+    background:rgba(255,200,87,0.08);border:1px solid rgba(255,200,87,0.2);
+    width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  }
+  .step h3{margin:0 0 4px;font-size:16px;}
+  .step p{margin:0;color:var(--ink-dim);font-size:14.5px;}
+
+  /* STARTERS */
+  .starters{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+  .starter-card{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:12px;
+    padding:22px;position:relative;overflow:hidden;
+  }
+  .starter-card::before{
+    content:"";position:absolute;top:-40%;right:-30%;width:180px;height:180px;
+    border-radius:50%;filter:blur(40px);opacity:.35;
+  }
+  .starter-card.fire::before{background:var(--fire);}
+  .starter-card.water::before{background:var(--water);}
+  .starter-card.grass::before{background:var(--grass);}
+  .starter-name{font-size:19px;font-weight:600;margin:0 0 2px;position:relative;}
+  .type-badge{
+    display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;
+    padding:3px 8px;border-radius:5px;font-weight:600;letter-spacing:.03em;margin-bottom:14px;position:relative;
+  }
+  .fire .type-badge{background:rgba(255,107,74,.15);color:var(--fire);}
+  .water .type-badge{background:rgba(63,182,255,.15);color:var(--water);}
+  .grass .type-badge{background:rgba(99,214,138,.15);color:var(--grass);}
+  .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:12.5px;color:var(--ink-dim);position:relative;}
+  .bar-label{width:56px;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
+  .bar-track{flex:1;height:6px;background:#232a3b;border-radius:4px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:4px;}
+  .fire .bar-fill{background:var(--fire);}
+  .water .bar-fill{background:var(--water);}
+  .grass .bar-fill{background:var(--grass);}
+  .starter-note{font-size:13.5px;color:var(--ink-dim);margin-top:14px;position:relative;border-top:1px dashed var(--line);padding-top:12px;}
+  .pick-tag{
+    position:absolute;top:18px;right:18px;font-size:10.5px;font-family:'JetBrains Mono',monospace;
+    background:rgba(255,200,87,.12);color:var(--gold);border:1px solid rgba(255,200,87,.3);
+    padding:2px 7px;border-radius:20px;
+  }
+
+  /* TYPE CHART */
+  .type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;}
+  .type-chip{
+    border-radius:9px;padding:12px 10px;text-align:center;font-size:13px;font-weight:600;
+    border:1px solid var(--line);background:var(--bg-raised);
+  }
+  .type-chip .swatch{width:14px;height:14px;border-radius:50%;margin:0 auto 8px;}
+
+  /* CODES */
+  .code-box{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .code-box p{margin:0;color:var(--ink-dim);font-size:14.5px;max-width:480px;}
+  .steps-mini{margin:14px 0 0;padding-left:18px;color:var(--ink-dim);font-size:14px;}
+  .steps-mini li{margin-bottom:4px;}
+
+  /* FAQ */
+  details{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;
+    padding:14px 18px;margin-bottom:10px;
+  }
+  summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";color:var(--gold);font-size:18px;font-weight:400;}
+  details[open] summary::after{content:"–";}
+  details p{color:var(--ink-dim);font-size:14.5px;margin:10px 0 2px;}
+
+  footer{padding:32px 0;text-align:center;color:var(--ink-dim);font-size:13px;}
+  .footer-note{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5c6478;margin-top:6px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Evomon Guide</div>
+    <div class="navlinks">
+      <a href="#start">Quick Start</a>
+      <a href="#starters">Starters</a>
+      <a href="#types">Types</a>
+      <a href="#codes">Codes</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Roblox · Creature Collector</div>
+    <h1 class="title">Everything you need for your <span>first hour</span> in Evomon.</h1>
+    <p class="lede">No filler, no ranking-list padding — just the order things actually matter in: codes, starter, first route, and the level 30 wall.</p>
+    <div class="cta-row">
+      <a href="#start" class="btn btn-primary">Start the quick route →</a>
+      <a href="#starters" class="btn btn-ghost">Compare starters</a>
+    </div>
+  </div>
+</header>
+
+<section id="start">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">01 — Order of operations</p>
+      <h2>Do these four things, in this order</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num mono">1</div>
+        <div><h3>Redeem codes before you spend anything</h3>
+        <p>Codes are entered from the settings cog (top-right) → scroll down → enter code → Ok. Do this before buying anything with coins so you don't waste currency you were about to get for free.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num mono">2</div>
+        <div><h3>Pick one starter and commit</h3>
+        <p>Bubble, Blazpup, or Leafbun. Whichever you choose, feed it all your early EXP Fruit — don't split resources across your whole box yet.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num mono">3</div>
+        <div><h3>Clear Verdant Valley → Petal Pond → first Island Boss</h3>
+        <p>This is the intended early route. Match your starter's type against what's dominant on each island rather than over-leveling through brute force.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num mono">4</div>
+        <div><h3>Treat Level 30 as a wall, not a milestone</h3>
+        <p>Level 30 unlocks your Ultimate Ability and the Ascension questline. Don't rush past it undergeared — finish Ascension immediately once you hit it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="starters">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">02 — The one decision that matters early</p>
+      <h2>Starter comparison</h2>
+    </div>
+    <div class="starters">
+      <div class="starter-card water">
+        <span class="pick-tag">Safest pick</span>
+        <p class="starter-name">Bubble</p>
+        <span class="type-badge">WATER</span>
+        <div class="bar-row"><span class="bar-label">Attack</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div></div>
+        <div class="bar-row"><span class="bar-label">Speed</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
+        <div class="bar-row"><span class="bar-label">Bulk</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+        <p class="starter-note">Verdant Valley leans Rock/Ground and the first Island Boss and World Boss are both weak to Water — Bubble matches the game's actual early curve.</p>
+      </div>
+      <div class="starter-card fire">
+        <span class="pick-tag">Highest power</span>
+        <p class="starter-name">Blazpup</p>
+        <span class="type-badge">FIRE</span>
+        <div class="bar-row"><span class="bar-label">Attack</span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="bar-row"><span class="bar-label">Speed</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="bar-row"><span class="bar-label">Bulk</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div></div>
+        <p class="starter-note">Fastest clears if you play well, but weak into the exact matchups the early game throws at you. Higher skill floor.</p>
+      </div>
+      <div class="starter-card grass">
+        <span class="pick-tag">Slow & steady</span>
+        <p class="starter-name">Leafbun</p>
+        <span class="type-badge">GRASS</span>
+        <div class="bar-row"><span class="bar-label">Attack</span><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div></div>
+        <div class="bar-row"><span class="bar-label">Speed</span><div class="bar-track"><div class="bar-fill" style="width:45%"></div></div></div>
+        <div class="bar-row"><span class="bar-label">Bulk</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <p class="starter-note">Most forgiving to play badly on. Slower clears, but sustain covers for mistakes while you're still learning the battle system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="types">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">03 — Reference</p>
+      <h2>The 9 types at a glance</h2>
+    </div>
+    <div class="type-grid">
+      <div class="type-chip"><div class="swatch" style="background:var(--fire)"></div>Fire</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--water)"></div>Water</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--grass)"></div>Grass</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--ice)"></div>Ice</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--bug)"></div>Bug</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--ground)"></div>Ground</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--rock)"></div>Rock</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--shadow)"></div>Shadow</div>
+      <div class="type-chip"><div class="swatch" style="background:var(--light)"></div>Light</div>
+    </div>
+  </div>
+</section>
+
+<section id="codes">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">04 — Free rewards</p>
+      <h2>Redeeming codes</h2>
+    </div>
+    <div class="code-box">
+      <div>
+        <strong>How to redeem</strong>
+        <ol class="steps-mini">
+          <li>Launch Evomon, click the cog icon (top-right)</li>
+          <li>Scroll to the bottom of settings</li>
+          <li>Enter the code exactly, then click Ok</li>
+          <li>If a code "looks dead," retype it — trailing spaces are the usual cause</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">05 — Fast answers</p>
+      <h2>Before you commit longer</h2>
+    </div>
+    <details open>
+      <summary>What is Evomon?</summary>
+      <p>A Roblox monster-catching game — catch, train, and battle over 200 Evomons across 9 types, with island-based progression toward a Level 30 power spike and late-game systems like Ascension and Rifts.</p>
+    </details>
+    <details>
+      <summary>Which starter should I actually pick?</summary>
+      <p>Bubble if you want the smoothest early game — it matches the type weaknesses of the first boss fights. Pick Blazpup only if you're comfortable playing around a weaker early matchup for a faster long-term clear speed.</p>
+    </details>
+    <details>
+      <summary>Can I switch starters later?</summary>
+      <p>Not meaningfully — you can catch other Evomon, but your starter is meant to be your first fully-invested team member. Don't spread early EXP Fruit across multiple catches.</p>
+    </details>
+    <details>
+      <summary>What should I prioritize before Level 30?</summary>
+      <p>Player EXP over creature EXP — it gates Ascension and Evolutions. Daily quests are the single best Player EXP source early on.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    This is an unofficial, community-style reference — not affiliated with the Evomon developers.
+    <div class="footer-note">MVP v0.1 — starter route + codes + type chart. Leveling, evolution, and team-building sections coming next.</div>
+  </div>
+</footer>
+
+</body>
+</html>
